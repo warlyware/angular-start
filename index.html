@@ -10,10 +10,13 @@
 
   <body>
     <h1>Hello!</h1>
-    <h2>{{4+5}}</h2>
-    <input ng-model="fancy">
-    <input type="checkbox" ng-model="fancy">
+    <input ng-model="name" ng-model-options="{ debounce: 500 }" placeholder="Enter your name">
+    <input type="checkbox" ng-model="fancy"><br><br>
+    <textarea ng-model="tweet" rows="5" ng-class="{ red: (tweet.length > 140)}"></textarea>
 
+    <h3 ng-class="{ red: (tweet.length > 140)}">{{140 - tweet.length}}</h3>
+
+    <h3 ng-show="name">Hello {{name}}!</h3>
     <h3 ng-show="fancy">Fancy!</h3>
 
     <ul>
