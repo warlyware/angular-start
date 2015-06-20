@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html ng-app>
+<html ng-app="ng-learn">
 
   <head>
     <link rel="stylesheet" href="style.css">
@@ -9,23 +9,24 @@
   </head>
 
   <body>
-    <h1>Hello!</h1>
-    <input ng-model="name" ng-model-options="{ debounce: 500 }" placeholder="Enter your name">
-    <input type="checkbox" ng-model="fancy"><br><br>
-    <textarea ng-model="tweet" rows="5" ng-class="{ red: (tweet.length > 140)}"></textarea>
+    <div ng-controller="TweetCtrl as t">    
+      <h3 ng-show="name">Hello {{name}}!</h3>
+      <h4>{{t.something}}</h4>
+      <input ng-model="name" ng-model-options="{ debounce: 500 }" placeholder="Enter your name">
+      <br><br>
+      <textarea ng-model="t.tweet" rows="5" ng-class="{ red: t.isTweetMaxed() }"></textarea>
 
-    <h3 ng-class="{ red: (tweet.length > 140)}">{{140 - tweet.length}}</h3>
+      <h3 ng-class="{ red: t.isTweetMaxed() }">
+        {{t.getRemainingCharacters()}}
+      </h3>
+      <button ng-disabled="t.isTweetMaxed()" ng-click="t.submitTweet(t.tweet)">Tweet</button>
 
-    <h3 ng-show="name">Hello {{name}}!</h3>
-    <h3 ng-show="fancy">Fancy!</h3>
+      <ul>
+        <li ng-repeat="tweet in t.tweetsList">{{tweet}}</li>
+      </ul>
 
-    <ul>
-      <li ng-hide="fancy">Item 1</li>
-      <li>Item 2</li>
-      <li>Item 3</li>
-      <li ng-hide="fancy">Item 4</li>
-      <li>Item 5</li>
-    </ul>
+    </div>
+
   </body>
 
 </html>
