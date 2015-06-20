@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html ng-app>
+
+  <head>
+    <link rel="stylesheet" href="style.css">
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.1/angular.min.js"></script>
+    <script src="script.js"></script>
+  </head>
+
+  <body>
+    <h1>Hello!</h1>
+    <h2>{{4+5}}</h2>
+    <input ng-model="fancy">
+    <input type="checkbox" ng-model="fancy">
+
+    <h3 ng-show="fancy">Fancy!</h3>
+
+    <ul>
+      <li ng-hide="fancy">Item 1</li>
+      <li>Item 2</li>
+      <li>Item 3</li>
+      <li ng-hide="fancy">Item 4</li>
+      <li>Item 5</li>
+    </ul>
+  </body>
+
+</html>
